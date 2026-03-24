@@ -8,7 +8,10 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
         h1 { color: #FF8A3D; }
         h2 { color: #555; margin-top: 30px; }
+        h3 { color: #666; margin-top: 20px; }
         .date { color: #888; font-size: 14px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 6px; }
     </style>
 </head>
 <body>
@@ -16,54 +19,84 @@
     <p class="date">Last updated: March 24, 2026</p>
 
     <h2>Overview</h2>
-    <p>PawAI ("we", "our", "the app") is a pet care assistant application. We respect your privacy and are committed to protecting your personal data.</p>
+    <p>PawAI ("we", "our", "the app") is a pet care assistant application that helps you track your pet's health, medications, feeding, and get AI-powered pet care insights. We respect your privacy and are committed to protecting your personal data.</p>
 
-    <h2>Data Collection</h2>
-    <p>PawAI collects and stores the following data <strong>locally on your device only</strong>:</p>
+    <h2>Data Stored on Your Device</h2>
+    <p>PawAI stores the following data <strong>locally on your device only</strong> using SQLite:</p>
     <ul>
         <li>Your name (for personalization)</li>
-        <li>Pet information (name, breed, age, weight, health records)</li>
-        <li>Medication schedules and feeding logs</li>
-        <li>Chat history with the AI Vet assistant</li>
+        <li>Pet profiles (name, breed, age, weight, photo, notes)</li>
+        <li>Health records (vaccinations, vet visits, surgeries, tests)</li>
+        <li>Medication schedules</li>
+        <li>Feeding logs</li>
         <li>App preferences and settings</li>
     </ul>
-    <p><strong>All pet data and chat history are stored locally on your device using SQLite.</strong> We do not upload, sync, or store your personal data on external servers.</p>
+    <p>This data is never uploaded to external servers, synced to the cloud, or shared with third parties. It remains entirely on your device.</p>
 
-    <h2>AI Service</h2>
-    <p>When you use the AI Vet feature, your questions and pet context data are sent to our secure server proxy to generate responses. This data is:</p>
+    <h2>AI Insights Feature</h2>
+    <p>When you use the AI Insights feature, the following data is sent to our secure server proxy to generate a response:</p>
     <ul>
-        <li>Processed in real-time and not permanently stored on our servers</li>
-        <li>Used solely to generate AI responses for your queries</li>
-        <li>Not shared with third parties for marketing or profiling purposes</li>
+        <li>Your pet's profile information (name, type, breed, age, weight)</li>
+        <li>Recent health records, active medications, and feeding logs (for context)</li>
+        <li>The insight category you selected</li>
+    </ul>
+    <h3>How AI data is processed:</h3>
+    <ul>
+        <li>Your request is sent via encrypted HTTPS to our server proxy (hosted on Supabase)</li>
+        <li>The proxy forwards the request to DeepSeek AI for response generation</li>
+        <li>Responses are returned to your device in real-time</li>
+        <li><strong>No pet data or queries are permanently stored on our servers or by the AI provider</strong></li>
+        <li>Data is processed solely to generate the requested insight and is not used for training, profiling, or marketing</li>
     </ul>
 
     <h2>Advertising</h2>
-    <p>PawAI uses Google AdMob to display advertisements. AdMob may collect:</p>
+    <p>PawAI displays advertisements through Google AdMob to support the free app. AdMob may collect the following data:</p>
     <ul>
-        <li>Device advertising identifier (IDFA on iOS)</li>
-        <li>General device information for ad targeting</li>
+        <li><strong>Device Advertising Identifier (IDFA)</strong> - Used to serve personalized ads</li>
+        <li><strong>Device information</strong> - Device model, OS version, screen size</li>
+        <li><strong>IP address</strong> - For approximate location-based ad targeting</li>
+        <li><strong>Ad interaction data</strong> - Impressions, clicks, and video completion</li>
     </ul>
-    <p>You can opt out of personalized ads through your device settings. For more information, see <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
+    <p>You can opt out of personalized advertising:</p>
+    <ul>
+        <li><strong>iOS:</strong> Settings &gt; Privacy &amp; Security &gt; Tracking &gt; disable tracking for PawAI</li>
+        <li>You will be asked for permission before ad tracking is enabled (App Tracking Transparency)</li>
+    </ul>
+    <p>For more information about Google's data practices, see <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and <a href="https://support.google.com/admob/answer/6128543">AdMob's data disclosure</a>.</p>
 
     <h2>Third-Party Services</h2>
-    <ul>
-        <li><strong>Google AdMob</strong> - Advertising services</li>
-        <li><strong>AI API Provider</strong> - AI response generation (via secure proxy)</li>
-    </ul>
+    <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+        <tr><th>Service</th><th>Purpose</th><th>Data Shared</th></tr>
+        <tr><td>Google AdMob</td><td>Advertising</td><td>Device ID, IP address, ad interactions</td></tr>
+        <tr><td>Supabase (proxy server)</td><td>AI request routing</td><td>Pet profile data for AI insights (not stored)</td></tr>
+        <tr><td>DeepSeek AI</td><td>AI response generation</td><td>Pet context data via proxy (not stored)</td></tr>
+    </table>
 
     <h2>Data Security</h2>
-    <p>Your data is stored locally on your device and protected by your device's security measures. AI communications are transmitted over encrypted HTTPS connections.</p>
+    <p>We take data security seriously:</p>
+    <ul>
+        <li>All local data is protected by your device's built-in security (passcode, Face ID, etc.)</li>
+        <li>AI communications use encrypted HTTPS connections</li>
+        <li>No API keys or credentials are stored on your device</li>
+        <li>Our server proxy does not log or retain your pet data</li>
+    </ul>
 
     <h2>Children's Privacy</h2>
-    <p>PawAI is not directed at children under 13. We do not knowingly collect data from children under 13.</p>
+    <p>PawAI is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us.</p>
 
     <h2>Your Rights</h2>
-    <p>You can delete all your data at any time through the app's Settings > Delete All Data option. Since data is stored locally, deleting it removes it permanently.</p>
+    <ul>
+        <li><strong>Delete all data:</strong> Use Settings &gt; Delete All Data within the app to permanently remove all local data</li>
+        <li><strong>Opt out of ad tracking:</strong> Disable tracking in iOS Settings or deny the tracking permission prompt</li>
+        <li><strong>Export your data:</strong> Use Settings &gt; Export Health Data to export your records as CSV</li>
+    </ul>
+    <p>Since all personal data is stored locally on your device, uninstalling the app also removes all data permanently.</p>
 
     <h2>Changes to This Policy</h2>
-    <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated date.</p>
+    <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated revision date.</p>
 
-    <h2>Contact</h2>
-    <p>If you have questions about this privacy policy, contact us at: <a href="mailto:batuhansenavc@gmail.com">batuhansenavc@gmail.com</a></p>
+    <h2>Contact Us</h2>
+    <p>If you have questions, concerns, or requests regarding this privacy policy or your data, contact us at:</p>
+    <p><strong>Email:</strong> <a href="mailto:batuhansenavc@gmail.com">batuhansenavc@gmail.com</a></p>
 </body>
 </html>
